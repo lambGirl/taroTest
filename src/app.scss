@@ -1,0 +1,66 @@
+html, body {
+  margin: 0;
+  padding: 0;
+
+}
+View{
+   white-space: normal;
+   word-break: break-all;
+   word-wrap: break-word;
+ }
+
+/**app.wxss**/
+page{
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-size: 28rpx;
+}
+page>view, page>scroll-view{
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #f6f5f6;
+}
+.noScrollBar::-webkit-scrollbar{width:0;height:0}
+.container {
+  height: 100%;
+}
+view{
+  width: 100%;
+  box-sizing: border-box;
+  white-space: normal;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.pd-10{
+  padding: 10px;
+}
+.pd-0{
+  padding: 0px
+}
+.bgc-fff{
+  background-color: #fff;
+}
+.bdr-4{
+  border-radius: 4px;
+}
+.text-ellipsis{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*中线*/
+.line{
+  height:1px;
+  border-top: 1px solid #DCDCDC;
+  width:80%;
+}
+
+
+
+
+
+
