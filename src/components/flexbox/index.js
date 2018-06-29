@@ -19,8 +19,9 @@ export default  class FlexBox  extends Component{
             endStyle: PropTypes.string
         }
     }
-    handle(){
-        this.props.checked();
+    handleCheck(){
+       // console.log("点击有用不");
+       this.props.checked();
     }
 
     render(){
@@ -28,17 +29,17 @@ export default  class FlexBox  extends Component{
             componentStyle,
             detail,
             defaultValue,
-            title
+            title,
         } =  this.props,flexClass =  classnames({
             "flex-box":true,
             "flex-box-v": this.state.vertical,
 
         });
-        return (<View className='flex-box' style={componentStyle} onClick={this.handle.bind(this)}>
+        return (<View className='flex-box' style={componentStyle} onClick={this.handleCheck.bind(this)}>
             <View className='leftTitle'>
                 <Text>{title}</Text>
             </View>
-            <View className='rightContent'>
+            <View className='rightContent' >
                 <Input
                     value={defaultValue}
                     placeholder={detail}
