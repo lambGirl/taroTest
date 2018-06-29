@@ -25,6 +25,8 @@ class Index extends Component {
       Taro.navigateTo({
           url:'/pages/cityList/index?tag='+tag
       })
+      //location.href =  '/pages/cityList/index?tag='+tag;
+
   }
   //点击查询
   onQuery(){
@@ -36,7 +38,7 @@ class Index extends Component {
 
   render () {
     return (
-        <View>
+        <View >
             <View className='noScrollBar'>
                 <View className='topBanner'>
                     <Image src='https://miniapp.scqcp.com/images/banner_1.png' mode='aspectFill'></Image>

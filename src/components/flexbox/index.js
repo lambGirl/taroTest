@@ -40,12 +40,12 @@ export default  class FlexBox  extends Component{
                 <Text>{title}</Text>
             </View>
             <View className='rightContent' >
-                <Input
-                    value={defaultValue}
-                    placeholder={detail}
-                    placeholder-style='color:#f1f1f1;'
-                    disabled={true}
-                ></Input>
+               <Input
+                 value={defaultValue}
+                 placeholder={detail}
+                 placeholder-style='color:#f1f1f1;'
+                 disabled={true}
+               />
             </View>
         </View>)
     }

@@ -1,0 +1,160 @@
+.noScrollBar::-webkit-scrollbar{width:0;height:0}
+
+.address-box,
+.address-search-box,
+.address-content-box,
+.address-search-box input,
+.address-checked-listbox,
+.address-search-listbox
+{
+  width: 100%;
+  height: 100%;
+}
+
+.address-search-box{
+  padding: 15px 20px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  /*position: relative;*/
+  height:100px;
+  >input{
+    box-sizing: border-box;
+    display: inline-block;
+    border-radius: 8px;
+    padding-left: 80px;
+    margin-left: -69px;
+    box-sizing: border-box;
+    border: 2px solid #dddcdc;
+    border-left: none;
+    background-color: white;
+    vertical-align: middle;
+    font-size:28px;
+  }
+
+  /*h5的样式设置*/
+  >.taro-img{
+    width: 70px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 8px 0 0 8px;
+    border: 2px solid #dddcdc;
+    border-right: none;
+    border-bottom: 0;
+    img{
+      height: 100%;
+      width: 100%;
+      background-color: white;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 5;
+      vertical-align: middle;
+    }
+  }
+  /*小程序的样式设置*/
+  >image{
+    position: absolute;
+    display: inline-block;
+    width: 70px;
+    height: 100%;
+    background-color: white;
+    border-radius: 8px 0 0 8px;
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 5;
+    border: 1px solid #dddcdc;
+    border-right: none;
+    vertical-align: middle;
+  }
+}
+
+.address-content-box{
+  overflow: hidden;
+}
+
+.address-content-line{
+  padding: 15px 20px;
+  >text{
+    display: block;
+    color: #707070;
+    padding-bottom: 20px;
+  }
+  .line-content{
+    text-align: justify;
+    margin-bottom: -40px;
+  }
+  .line-content>i{
+    display: inline-block;
+    width: 30%;
+    height:0;
+  }
+
+  .line-content>.locationDetail{
+    color: #3e3e3e;
+    width: 30%;
+    padding: 30px 0;
+    line-height: 20px;
+    text-align: center;
+    background-color: white;
+    border-radius: 4px;
+    border: 2px solid #dddcdc;
+    display: inline-block;
+    margin-bottom: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    box-sizing: border-box;
+  }
+
+  .now-city{
+    width: 100%;
+    margin: 0;
+
+  }
+  .now-city>.locationDetail{
+    width: 100%;
+    margin: 0;
+    padding: 30px 20px;
+    text-align: left;
+  }
+  .now-city text:nth-of-type(1){
+    margin-right: 20px;
+    color: black;
+    font-weight: bold;
+    font-size: 30px;
+  }
+  .now-city text:nth-of-type(2){
+    color: #9b9b9b;
+  }
+}
+
+.address-keyboard{
+  text-align: justify;
+  padding: 20px;
+  margin-bottom: -40px;
+}
+.address-keyboard>i{
+  display: inline-block;
+  width: 15%;
+  height:0;
+}
+.address-keyboard>.keyboard-unit{
+  display: inline-block;
+  padding: 30px 0;
+  line-height: 20px;
+  width: 15%;
+  background-color: #fbfbfb;
+  border-radius: 4px;
+  text-align: center;
+  margin-bottom: 16px;
+  border: 2px solid #dddcdc;
+}
+.address-keyboard>.key-checked{
+  background-color: #c4d9f2;
+}
+.address-keyboard>.keyboard-unit:active{
+  background-color: #eef8ff;
+}
