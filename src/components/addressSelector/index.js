@@ -12,7 +12,7 @@ export default class AddressSelector extends Component{
         }
     }
     InputChange(e){
-        console.log("index", e.target.value)
+       // console.log("index", e.target.value)
     }
 
     render(){

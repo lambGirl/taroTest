@@ -17,10 +17,6 @@ class Index extends Component {
     }
   }
 
-
-
-
-
   onChecked(tag){
       Taro.navigateTo({
           url:'/pages/cityList/index?tag='+tag
@@ -28,15 +24,26 @@ class Index extends Component {
       //location.href =  '/pages/cityList/index?tag='+tag;
 
   }
+
   //点击查询
-  onQuery(){
-        Taro.switchTab({
-            url: '/pages/about/about'
-        })
+  onQuery = async()=>{
+      const res = await Taro.request({
+          url: 'http://localhost:5000/api?server=tz_visit',
+          data:JSON.stringify({
+              type:'1',
+              openId: "sdfsdfsdf"
+          }),
+          header: {
+              'content-type': 'application/json'
+          }
+      })
+      .then(res =>{
+          console.log("res",res);
+      })
+
   }
 
-
-  render () {
+    render () {
     return (
         <View >
             <View className='noScrollBar'>
