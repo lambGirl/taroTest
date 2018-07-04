@@ -21,6 +21,7 @@
     "@tarojs/taro-weapp": "0.0.62",
     "@tarojs/transformer-wx": "0.0.56",
     "@tarojs/webpack-runner": "0.0.62",
+    "flyio": "^0.5.9",
     "nerv-redux": "^1.2.17",
     "nervjs": "^1.2.16",
     "redux": "^3.7.2",

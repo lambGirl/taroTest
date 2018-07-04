@@ -2,6 +2,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Input, Button, Image } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 import FlexBox from '../../components/flexbox/index';
+import  { postIo,isWeixin }  from '../../utils/index'
 import './index.less'
 
 import { increment, decrement, asyncInc } from '../../actions/counter'
@@ -21,29 +22,45 @@ class Index extends Component {
       Taro.navigateTo({
           url:'/pages/cityList/index?tag='+tag
       })
-      //location.href =  '/pages/cityList/index?tag='+tag;
-
   }
-
   //点击查询
-  onQuery = async()=>{
-      const res = await Taro.request({
-          url: 'http://localhost:5000/api?server=tz_visit',
+  onQuery(){
+      if(isWeixin()){
+          this.onQueryWx();
+          return;
+      }
+      postIo({
+          configUrl:'/api?server=tz_visit',
+          method:"POST",
           data:JSON.stringify({
               type:'1',
               openId: "sdfsdfsdf"
           }),
-          header: {
-              'content-type': 'application/json'
+          header:{
+              'Content-Type': 'application/json'
           }
-      })
-      .then(res =>{
+      }).then(function(res){
           console.log("res",res);
+      }).catch(function(err){
+
       })
 
   }
+  onQueryWx(){
+      postIo({
+          configUrl:'/ticket/getConnStartCity',
+          method:"POST",
+          data:{ stationNo: "" },
+          header:{
+              'Content-Type': 'application/json'
+          }
+      }).then(function(res){
+          console.log("res",res);
+      }).catch(function(err){
 
-    render () {
+      })
+  }
+  render () {
     return (
         <View >
             <View className='noScrollBar'>
