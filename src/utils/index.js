@@ -52,7 +52,18 @@ function postIo(params,){
     })
 }
 
+function getLetter(){
+    var A_Z = [];
+    for (var i = 65; i < 91; i++) {
+        A_Z.push(String.fromCharCode(i));
+    }
+    return A_Z
+}
+function set(key,val){
+
+}
 export{
     isWeixin,
-    postIo
+    postIo,
+    getLetter
 }

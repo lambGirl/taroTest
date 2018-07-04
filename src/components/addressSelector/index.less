@@ -1,5 +1,4 @@
 .noScrollBar::-webkit-scrollbar{width:0;height:0}
-
 .address-box,
 .address-search-box,
 .address-content-box,
@@ -92,7 +91,7 @@
     height:0;
   }
 
-  .line-content>.locationDetail{
+  .line-content .locationDetail{
     color: #3e3e3e;
     width: 30%;
     padding: 30px 0;
@@ -114,7 +113,7 @@
     margin: 0;
 
   }
-  .now-city>.locationDetail{
+  .now-city .locationDetail{
     width: 100%;
     margin: 0;
     padding: 30px 20px;
@@ -134,14 +133,14 @@
 .address-keyboard{
   text-align: justify;
   padding: 20px;
-  margin-bottom: -40px;
+/*  margin-bottom: -40px;*/
 }
 .address-keyboard>i{
   display: inline-block;
   width: 15%;
   height:0;
 }
-.address-keyboard>.keyboard-unit{
+.address-keyboard .keyboard-unit{
   display: inline-block;
   padding: 30px 0;
   line-height: 20px;
@@ -155,6 +154,51 @@
 .address-keyboard>.key-checked{
   background-color: #c4d9f2;
 }
-.address-keyboard>.keyboard-unit:active{
+.address-keyboard .keyboard-unit::after{
+  display: inline-block;
+  content:" ";
+}
+.address-keyboard .keyboard-unit:active{
   background-color: #eef8ff;
+}
+/**
+  所有的城市列表
+ */
+.checked-list-searchBox,.address-search-listbox{
+  background-color: white;
+  padding: 0px 20px;
+  line-height: 20px;
+}
+.checked-list-searchBox>view,.checked-list-searchBox>div,.address-search-listbox>view,.address-search-listbox>div{
+  padding:42px 20px 42px 40px;
+  border-bottom: 2px solid #dcdcdc;
+}
+
+.checked-list-searchBox>view:last-child,.checked-list-searchBox>div:last-child, .address-search-listbox>view:last-child,.address-search-listbox>div:last-child{
+  border: none;
+}
+.checked-list-searchBox>view:active,.checked-list-searchBox>div:active,.address-search-listbox>view:active,.address-search-listbox>div:active{
+  background-color: #eef8ff;
+}
+.checked-list-searchBox text:nth-of-type(1),.checked-list-searchBox span:nth-of-type(1),.address-search-listbox text:nth-of-type(1),.address-search-listbox span:nth-of-type(1){
+  padding-right:20px;
+  vertical-align: top;
+}
+.checked-list-searchBox text:nth-of-type(2),.checked-list-searchBox span:nth-of-type(2),.address-search-listbox text:nth-of-type(2),.address-search-listbox span:nth-of-type(2){
+  color: #b9b9b9;
+  vertical-align: top;
+}
+.address-search-listbox{
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.address-search-listbox .address-search-city::before{
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  background-color: orange;
+  border-radius: 50%;
+  margin:0 10px 0 -30px;
 }

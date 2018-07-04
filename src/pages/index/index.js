@@ -19,9 +19,12 @@ class Index extends Component {
   }
 
   onChecked(tag){
-      Taro.navigateTo({
-          url:'/pages/cityList/index?tag='+tag
-      })
+      if(tag == "start"){
+          Taro.navigateTo({
+              url:'/pages/startCity/index?tag='+tag
+          })
+      }
+
   }
   //点击查询
   onQuery(){
