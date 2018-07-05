@@ -1,8 +1,9 @@
 import Taro from "@tarojs/taro";
+import 'babel-polyfill';
 
 var config = {
     wxapp:'https://miniapp.scqcp.com',
-    h5: 'http://localhost:5000'
+    h5: 'http://192.168.1.107:5000'
 }
 
 function diao () {
@@ -12,6 +13,7 @@ function diao () {
 function isWeixin(){
     return Taro.getEnv() == "WEAPP" ||false
 }
+
 function wxParam(url, data, configUrl,isScan){
 
     var urlChunk=configUrl.split("?"),
@@ -36,15 +38,19 @@ function wxParam(url, data, configUrl,isScan){
         data: data,
     }
 }
-function postIo(params,){
+
+function postIo(params){
+    //console.log("过来请求了嘛");
     var url =  Taro.getEnv() == "WEAPP"?config['wxapp']:config["h5"],params_new = {url:url+params.configUrl, ...params};
 
     if( Taro.getEnv() == "WEAPP"){
         params_new = Object.assign(params_new, wxParam(url, params.data,params.configUrl, params.isScan));
     }
+
     return new Promise(function(resolve, reject){
-        //console.log("url", url+params.configUrl);
-        Taro.request({...params_new}).then(function(res){
+
+        Taro.request(params_new).then(function(res){
+          //  console.log("我是promise",res);
             resolve(res);
         }).catch(function(err){
             reject(err);
@@ -60,10 +66,16 @@ function getLetter(){
     return A_Z
 }
 function set(key,val){
-
+    Taro.setStorageSync(key, val);
 }
+function get(key){
+    return Taro.getStorageSync(key);
+}
+
 export{
     isWeixin,
     postIo,
-    getLetter
+    getLetter,
+    set,
+    get
 }

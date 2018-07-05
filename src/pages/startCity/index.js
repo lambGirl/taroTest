@@ -42,6 +42,7 @@ export default class CityList extends Component {
         })
     }
     initStart(param){
+       // console.log("initStart--------------")
         let url =  param.h5Url||'/api?server=tz_getStartHotCity'; //H5的情况
         if(isWeixin()){
             url = param.weappUrl||'/ticket/getConnStartCity';
@@ -55,7 +56,7 @@ export default class CityList extends Component {
                 'Content-Type': 'application/json'
             }
         }).then((res)=>{
-          // console.log("res",res);
+         //  console.log("url",url,res);
             if(param.tag == "hotCity"){
                 this.setState({
                     hotCity: isWeixin()?res.data.body.data:res.data.data.body.data
@@ -70,8 +71,13 @@ export default class CityList extends Component {
         })
     }
 
-    chooseItem(ite,tag){
-       // console.log("item",item);
+    chooseItem(item,tag){
+        console.log("item",item,tag);
+        //历史记录存储
+        if(tag){
+
+        }
+        //起始地跳转
 
     }
 

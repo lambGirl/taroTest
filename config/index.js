@@ -32,8 +32,13 @@ const config = {
           enable: true
         }
       }
+    },
+    devServer: {
+        disableHostCheck: true
     }
-  }
+
+  },
+
 }
 
 module.exports = function (merge) {

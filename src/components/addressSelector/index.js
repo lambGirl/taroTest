@@ -70,10 +70,11 @@ export default class AddressSelector extends Component{
     }
 
     componentDidMount(){
-        //console.log("keyboard", this.props);
+      //  console.log("componentDidMount");
     }
 
     componentWillReceiveProps(oldProp){
+        //console.log("我来过吗");
         const hotCityNull =  4-oldProp.hotCity.length%3;
         this.setState({
             hotCity: oldProp.hotCity,
@@ -84,7 +85,8 @@ export default class AddressSelector extends Component{
     }
     //被点击后的效果
     bindClick(val, tag){
-        this.props.bindClick(val,tag);
+        //执行父组件的方法
+        this.props.bindClick(val, tag);
     }
 
     render(){
@@ -126,7 +128,7 @@ export default class AddressSelector extends Component{
                                 {
                                      this.state.hotCity.map((val)=>{
                                          return (
-                                             <span><View className='locationDetail' onClick={this.bindClick.bind(this, val)}>{val.alias}</View>{" "}</span>
+                                             <span><View className='locationDetail' onClick={this.bindClick.bind(this, val,false)}>{val.alias}</View>{" "}</span>
                                          )
                                      })
                                 }
