@@ -72,10 +72,21 @@ function get(key){
     return Taro.getStorageSync(key);
 }
 
+function back(){
+    if(Taro.getEnv() == "WEAPP"){
+        //Taro.navigateBack();
+        Taro.navigateTo("/");
+        return;
+    }
+    history.back();
+
+}
+
 export{
     isWeixin,
     postIo,
     getLetter,
     set,
-    get
+    get,
+    back
 }

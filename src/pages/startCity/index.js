@@ -1,11 +1,20 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Input, Button, Image } from '@tarojs/components';
-import { isWeixin,postIo } from '../../utils/index';
+import { isWeixin,postIo,back } from '../../utils/index';
 import './index.less';
 import AddressSelector from "../../components/addressSelector/index";
 import Left from '../../asset/left.png'
+import { connect } from '@tarojs/redux'
+import { actions } from 'roronoa-zoro'
+import { bindActionCreators } from 'redux'
+import { namespace } from '../../models/test'
 
-
+@connect(
+    state => ({
+        data: state[namespace],
+    }),
+    dispatch => bindActionCreators(actions(namespace), dispatch),
+)
 export default class CityList extends Component {
     constructor(){
         super(...arguments);
@@ -72,13 +81,16 @@ export default class CityList extends Component {
     }
 
     chooseItem(item,tag){
-        console.log("item",item,tag);
+       // console.log("item",this.props);
+      //  return;
+        const {setStartCity} =  this.props;
+        setStartCity({...item});
         //历史记录存储
         if(tag){
 
         }
         //起始地跳转
-
+        back();
     }
 
     render(){

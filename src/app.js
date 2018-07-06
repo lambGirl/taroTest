@@ -1,13 +1,16 @@
+import Zoro from 'roronoa-zoro';
 import '@tarojs/async-await'
 import Taro, { Component } from '@tarojs/taro'
 import { Provider } from '@tarojs/redux'
-
 import Index from './pages/index/index'
 import configStore from './store'
-
+import testModel from './models/test'
 import './app.scss'
 
-const store = configStore();
+const app = Zoro()
+app.model(testModel) // 注册单个model或多个model，多个时为数组
+//const store = configStore();
+const store = app.start(false) // 启动�并创建store, 阻止默认初始化动作
 
 class App extends Component {
   config = {
@@ -50,7 +53,9 @@ class App extends Component {
       }
   }
 
-  componentDidMount () {}
+  componentWillMount() {
+      app.setup() // 启动初始化
+  }
 
   render () {
     return (

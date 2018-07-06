@@ -142,7 +142,7 @@ export default class AddressSelector extends Component{
                         <View className='address-keyboard' id='keyboard'>
                             {
                                 this.state.keyboard.map((val,index)=>{
-                                       return <span key={index}> <View className='keyboard-unit'>{val}</View> {" "}</span>
+                                       return <span key={index} > <View className='keyboard-unit' onClick={this.bindClick.bind(this, val,false)}>{val}</View> {" "}</span>
                                 })
                             }
                             {
