@@ -74,13 +74,35 @@ function get(key){
 
 function back(){
     if(Taro.getEnv() == "WEAPP"){
-        //Taro.navigateBack();
-        Taro.navigateTo("/");
+        Taro.navigateBack();
+        //Taro.navigateTo("/");
         return;
     }
     history.back();
 
 }
+Date.prototype.format = function (format) {
+    var o = {
+        "M+": this.getMonth() + 1, //month
+        "d+": this.getDate(), //day
+        "H+": this.getHours(), //hour
+        "m+": this.getMinutes(), //minute
+        "s+": this.getSeconds(), //second
+        "q+": Math.floor((this.getMonth() + 3) / 3), //quarter
+        "S": this.getMilliseconds() //millisecond
+    }
+
+    if (/(y+)/.test(format)) {
+        format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    }
+
+    for (var k in o) {
+        if (new RegExp("(" + k + ")").test(format)) {
+            format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+        }
+    }
+    return format;
+};
 
 export{
     isWeixin,
@@ -88,5 +110,6 @@ export{
     getLetter,
     set,
     get,
-    back
+    back,
+    Date
 }

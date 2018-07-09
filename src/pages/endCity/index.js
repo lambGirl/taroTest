@@ -3,7 +3,7 @@ import { View, Text, Input, Button, Image } from '@tarojs/components';
 import { isWeixin,postIo,back } from '../../utils/index';
 import './index.less';
 import AddressSelector from "../../components/addressSelector/index";
-import Header from '../../components/head/head'
+import Header from "../../components/head/head"
 import { connect } from '@tarojs/redux'
 import { actions } from 'roronoa-zoro'
 import { bindActionCreators } from 'redux'
@@ -34,20 +34,26 @@ export default class CityList extends Component {
       //  console.log("componentDidMount");
     }
     componentWillMount (){
+        let startCity =  this.props.data.startCity;
+      // console.log("startCity",startCity)
+       // return;0
         //初始化热门城市
         this.initStart({
-            h5Url:'/api?server=tz_getStartHotCity',
-            weappUrl: '/ticket/getStartHotCity',
+            h5Url:'/api?server=tz_getTargetHotCity',
+            weappUrl: '/ticket/getTargetHotCity',
             tag:'hotCity',
             data:{}
         })
 
         //初始化开始城市
         this.initStart({
-            h5Url:'/api?server=tz_queryAllConnStartPlace',
-            weappUrl: '/ticket/getConnStartCity',
+            h5Url:'/api?server=tz_queryTargetPlace',
+            weappUrl: 'ticket/getTargetPlace',
             tag:'cityList',
-            data:{ stationNo: "" }
+            data:JSON.stringify({
+                startNo: startCity.cityNo ,
+                startType: startCity.type
+            })
         })
     }
     initStart(param){
@@ -81,17 +87,17 @@ export default class CityList extends Component {
     }
 
     chooseItem(item,tag){
-        //console.log("item",item);
-        item.type="1";
+       // console.log("item",this.props);
       //  return;
-        const {setStartCity} =  this.props;
-        setStartCity({...item});
+        const {setEndCity} =  this.props;
+        setEndCity({...item});
         //历史记录存储
         if(tag){
 
         }
         //起始地跳转
         back();
+
     }
 
     render(){
@@ -99,7 +105,7 @@ export default class CityList extends Component {
         return (
             <View style='height:100%;overflow:hidden;'>
                 {
-                    !this.state.showHeader && <Header leftBack={this.back.bind(this)} centerTitle='选择出发城市'></Header>
+                    !this.state.showHeader && <Header leftBack={this.back.bind(this)} centerTitle='选择目的城市'></Header>
                 }
                <AddressSelector hotCity={this.state.hotCity} cityList={this.state.cityList} bindClick={this.chooseItem.bind(this)}></AddressSelector>
             </View>

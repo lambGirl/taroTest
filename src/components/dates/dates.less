@@ -1,0 +1,77 @@
+.date-box{
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 28px;
+  position:relative;
+}
+.date-title,.date-content,.date-month,.month-title,.month-content{
+  width: 100%;
+}
+.date-content{
+  /* background-color: #999; */
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 73px;
+}
+.date-title{
+  color: #fff;
+  background-color: #559EF7;
+  padding:  0 10px;
+  font-size:30px;
+  height: 73px;
+  line-height: 73px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.month-title{
+  background-color: #F5F5F5;
+  height: 77px;
+  color: #3E3E3E;
+  text-align: center;
+  font-size:30px;
+  line-height:77px;
+}
+.month-content{
+  padding: 0 10px;
+  background-color: white;
+}
+.date-title>view,.date-title>div {
+  display: inline-block;
+  width: 14.28%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.date-day{
+  width: 94px;
+  height:94px;
+  background-color: #fff;
+  border-radius: 50%;
+  /* margin: 6px auto; */
+  line-height: 94px;
+  font-size: 30px;
+}
+.date-today{
+  color:#fff;
+  background-color: #0c87e5;
+}
+.date-marker{
+  background-color: #e4e4e5;
+}
+.date-checked{
+  background-color: orange;
+  color: white;
+}
+.date-disable{
+  color:#ccc;
+}
+.month-content>view,.month-content>div{
+  display: inline-block;
+  width: 14.28%;
+  height: 120px;
+  box-sizing: border-box;
+  text-align: center;
+}

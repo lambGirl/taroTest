@@ -6,6 +6,7 @@ export default {
     state: {
         name:'',
         startCity:{},
+        endCity:{}
     },
 
     effects: {
@@ -24,6 +25,13 @@ export default {
                 type: 'resetStartCity',
                 payload: payload,
             });
+        },
+        setEndCity({payload},{put}){
+            // console.log("setStartCity", payload);
+            put({
+                type: 'resetEndCity',
+                payload: payload,
+            });
         }
     },
 
@@ -36,6 +44,13 @@ export default {
             return {
                 ...action,
                 startCity:state.payload
+            }
+        },
+        resetEndCity(state, action){
+            //  console.log("state", state, action);
+            return {
+                ...action,
+                endCity:state.payload
             }
         }
     },

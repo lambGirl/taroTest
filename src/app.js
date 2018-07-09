@@ -18,7 +18,9 @@ class App extends Component {
       'pages/index/index',
       'pages/hello/hello',
       'pages/about/about',
-      'pages/startCity/index'
+      'pages/startCity/index',
+      'pages/endCity/index',
+      'pages/date/index'
     ],
     window: {
       backgroundTextStyle: 'light',

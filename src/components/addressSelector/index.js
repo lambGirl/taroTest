@@ -76,11 +76,12 @@ export default class AddressSelector extends Component{
     componentWillReceiveProps(oldProp){
         //console.log("我来过吗");
         const hotCityNull =  4-oldProp.hotCity.length%3;
+        console.log("cityList----componentWillReceiveProps", oldProp.cityList);
         this.setState({
-            hotCity: oldProp.hotCity,
-            hotCityNull:new Array(hotCityNull),
-            cityList: oldProp.cityList,
-            searchData_s:oldProp.cityList
+            hotCity: oldProp.hotCity||[],
+            hotCityNull:new Array(hotCityNull)||[],
+            cityList: oldProp.cityList||[],
+            searchData_s:oldProp.cityList||[]
         })
     }
     //被点击后的效果
@@ -90,6 +91,7 @@ export default class AddressSelector extends Component{
     }
 
     render(){
+        console.log("cityList",this.state.cityList);
         return(
             <View className='scrollMain' style='height:100%;overflow:hidden'>
                 <View className='address-search-box'>
@@ -153,8 +155,9 @@ export default class AddressSelector extends Component{
                         </View>
                         <View className='checked-list-searchBox'>
                             {
+
                                 this.state.cityList.map((obj,index)=>{
-                                    return <View key={index}><Text>{obj["labelKey"]}</Text><Text>{obj.parentRegion||""}</Text></View>
+                                    return <View key={index} onClick={this.bindClick.bind(this, obj,false)}><Text>{obj["alias"]}</Text><Text>{obj.parentRegion||""}</Text></View>
                                 })
                             }
 

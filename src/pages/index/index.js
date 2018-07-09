@@ -23,7 +23,8 @@ export default  class Index extends Component {
   constructor (props) {
     super(...arguments);
     this.state = {
-        startCity: props.data.startCity
+        startCity: props.data.startCity,
+        endCity: props.data.endCity
     }
   }
 
@@ -31,6 +32,17 @@ export default  class Index extends Component {
       if(tag == "start"){
           Taro.navigateTo({
               url:'/pages/startCity/index?tag='+tag
+          })
+      }
+
+      if(tag == "end"){
+          Taro.navigateTo({
+              url:'/pages/endCity/index?tag='+tag
+          })
+      }
+      if(tag == "time"){
+          Taro.navigateTo({
+              url:'/pages/date/index'
           })
       }
 
@@ -78,7 +90,7 @@ export default  class Index extends Component {
       })
   }
   render(){
-     // console.log("startCity", this.state);
+     //console.log("startCity", this.state);
       return (
         <View >
             <View className='noScrollBar'>
@@ -89,7 +101,7 @@ export default  class Index extends Component {
                     <View className=' bgc-fff bdr-4 _inputbox'>
                         <FlexBox title='出发' defaultValue={this.state.startCity.alias} detail='请选择起始地' checked={this.onChecked.bind(this,'start')}/>
                         <View className='line'></View>
-                        <FlexBox title='目的地' defaultValue={this.state.startCity.alias} detail='请选择目的地' checked={this.onChecked.bind(this,'end')}/>
+                        <FlexBox title='目的地' defaultValue={this.state.endCity.alias} detail='请选择目的地' checked={this.onChecked.bind(this,'end')}/>
                         <View className='line'></View>
                         <FlexBox  title='时间' defaultValue={this.state.startCity.alias} detail='请选择时间' checked={this.onChecked.bind(this,'time')}/>
                         <View className='switch'>
