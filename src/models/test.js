@@ -32,6 +32,13 @@ export default {
                 type: 'resetEndCity',
                 payload: payload,
             });
+        },
+        setInitDateCity({payload}, {put}){
+          //  console.log("payload",payload);
+            put({
+                type: 'resetInitDate',
+                payload: payload,
+            });
         }
     },
 
@@ -51,6 +58,13 @@ export default {
             return {
                 ...action,
                 endCity:state.payload
+            }
+        },
+        resetInitDate(state, action){
+            //  console.log("state", state, action);
+            return {
+                ...action,
+                time:state.payload.date
             }
         }
     },

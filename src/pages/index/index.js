@@ -5,7 +5,7 @@ import { actions } from 'roronoa-zoro'
 import { bindActionCreators } from 'redux'
 import { namespace } from '../../models/test'
 import FlexBox from '../../components/flexbox/index';
-import  { postIo,isWeixin,back }  from '../../utils/index'
+import  { postIo,isWeixin,back, Date }  from '../../utils/index'
 import './index.less'
 
 @connect(
@@ -24,7 +24,8 @@ export default  class Index extends Component {
     super(...arguments);
     this.state = {
         startCity: props.data.startCity,
-        endCity: props.data.endCity
+        endCity: props.data.endCity,
+        time: new Date(props.data.time).format("yyyy-MM-dd")||new Date().format("yyyy-MM-dd")
     }
   }
 
@@ -42,7 +43,7 @@ export default  class Index extends Component {
       }
       if(tag == "time"){
           Taro.navigateTo({
-              url:'/pages/date/index'
+             url:`/pages/date/index?preSaleDay=100&checkedDate=${this.state.time}`
           })
       }
 
@@ -90,7 +91,7 @@ export default  class Index extends Component {
       })
   }
   render(){
-     //console.log("startCity", this.state);
+      var time =  this.state.time+(new Date(this.props.data.time).week());
       return (
         <View >
             <View className='noScrollBar'>
@@ -103,7 +104,7 @@ export default  class Index extends Component {
                         <View className='line'></View>
                         <FlexBox title='目的地' defaultValue={this.state.endCity.alias} detail='请选择目的地' checked={this.onChecked.bind(this,'end')}/>
                         <View className='line'></View>
-                        <FlexBox  title='时间' defaultValue={this.state.startCity.alias} detail='请选择时间' checked={this.onChecked.bind(this,'time')}/>
+                        <FlexBox  title='时间' defaultValue={time} detail='请选择时间' checked={this.onChecked.bind(this,'time')}/>
                         <View className='switch'>
                             <Image src='https://miniapp.scqcp.com/images/exchange_address.png' className='switchImg'></Image>
                         </View>

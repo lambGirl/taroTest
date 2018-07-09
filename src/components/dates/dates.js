@@ -62,7 +62,7 @@ export  default  class DatesList extends Component{
             markerData = this.state.markerData,
             monthFirstDayWeekIndex = new Date(year,monthIndex,1).getDay(),
             monthObj={
-                vacancy: monthFirstDayWeekIndex,//前面空位
+                vacancy: [...Array(monthFirstDayWeekIndex).keys()],//前面空位
                 value: year + "年" + (monthIndex+1)+"月",
                 day:[]
             },
@@ -111,9 +111,13 @@ export  default  class DatesList extends Component{
         return monthObj
     }
 
+    chooseDate(date){
+        this.props.chooseDate(date)
+    }
     render(){
         let date_box =  !isWeixin()?"height: 94%;overflow:hidden":"",
             date_content = !isWeixin()?"height:95%":"";
+       // console.log("dateAry",this.state.dateAry);
         return <View className='date-box'  style={date_box}>
             <View className='date-title'>
                 {
@@ -129,8 +133,13 @@ export  default  class DatesList extends Component{
                             <View className='month-title'>{item.value}</View>
                             <View className='month-content'>
                                 {
+                                    item.vacancy.map((item, index)=>{
+                                        return <View></View>
+                                    })
+                                }
+                                {
                                     item.day.map((day,index)=>{
-                                        return <View key={index}>
+                                        return <View key={index} onClick={this.chooseDate.bind(this)}>
                                             <View className={`date-day ${day.className}`}>{day.value}</View>
                                         </View>
                                     })

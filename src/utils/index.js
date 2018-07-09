@@ -103,7 +103,15 @@ Date.prototype.format = function (format) {
     }
     return format;
 };
-
+Date.prototype.week = function () {
+    if(this.format('yyyy/MM/dd')==new Date().format('yyyy/MM/dd')){
+        return '今天'
+    }
+    if(this.format('yyyy/MM/dd')==new Date((new Date()/1000+86400)*1000).format('yyyy/MM/dd')){
+        return '明天'
+    }
+    return ' 星期' + '日一二三四五六'.charAt(this.getDay());
+};
 export{
     isWeixin,
     postIo,
