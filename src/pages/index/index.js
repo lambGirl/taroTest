@@ -22,10 +22,11 @@ export default  class Index extends Component {
 
   constructor (props) {
     super(...arguments);
+    //console.log("time", props.data.time);
     this.state = {
         startCity: props.data.startCity,
         endCity: props.data.endCity,
-        time: new Date(props.data.time).format("yyyy-MM-dd")||new Date().format("yyyy-MM-dd")
+        time: props.data.time&&new Date(props.data.time).format("yyyy-MM-dd")||new Date().format("yyyy-MM-dd")
     }
   }
 
@@ -91,7 +92,9 @@ export default  class Index extends Component {
       })
   }
   render(){
+      console.log(" this.state.time",  this.state.time);
       var time =  this.state.time+(new Date(this.props.data.time).week());
+
       return (
         <View >
             <View className='noScrollBar'>

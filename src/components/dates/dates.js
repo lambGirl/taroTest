@@ -112,7 +112,8 @@ export  default  class DatesList extends Component{
     }
 
     chooseDate(date){
-        this.props.chooseDate(date)
+       // console.log("dateList-------[", date);
+        this.props.chooseDate(date.date)
     }
     render(){
         let date_box =  !isWeixin()?"height: 94%;overflow:hidden":"",
@@ -139,7 +140,7 @@ export  default  class DatesList extends Component{
                                 }
                                 {
                                     item.day.map((day,index)=>{
-                                        return <View key={index} onClick={this.chooseDate.bind(this)}>
+                                        return <View key={index} onClick={this.chooseDate.bind(this,day)}>
                                             <View className={`date-day ${day.className}`}>{day.value}</View>
                                         </View>
                                     })
